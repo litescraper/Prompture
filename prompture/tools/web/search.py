@@ -258,8 +258,9 @@ class SerperBackend(SearchBackend):
         bucket = _recency_bucket(request.recency_days)
         if bucket:
             payload["tbs"] = f"qdr:{bucket[0]}"
+        base_url = self._endpoint or config_value(None, "SERPER_BASE_URL") or "https://google.serper.dev"
         resp = self.session.post(
-            "https://google.serper.dev/search",
+            f"{base_url.rstrip('/')}/search",
             json=payload,
             headers={"X-API-KEY": self.key() or "", "Content-Type": "application/json"},
             timeout=self.timeout,

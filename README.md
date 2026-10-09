@@ -2328,3 +2328,12 @@ PRs welcome. Please add tests for new functionality and examples under `examples
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
+
+## Serper-compatible endpoints
+
+Set `SERPER_BASE_URL` to a compatible provider's base URL and keep its key in
+`SERPER_API_KEY`. An explicit `SerperBackend(endpoint=...)` takes precedence;
+without either setting, requests still use `https://google.serper.dev/search`.
+Trailing slashes on the base URL are accepted.
+
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others)
